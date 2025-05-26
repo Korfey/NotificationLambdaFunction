@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  variables:
+    SQS_ARN: "arn:aws:sqs:us-east-1:626635401615:simplewebapp-UploadsNotificationQueue"
+phases:
+  install:
+    runtime-versions:
+        dotnet: 8.0
+  pre_build:
+    commands:
+      - echo Restoring .NET dependencies...
+      - dotnet restore
+  build:
+    commands:
+      - echo Building the .NET project...
+      - dotnet build --configuration Release --output ./build-output
+  post_build:
+    commands:
+      - echo Packaging the Lambda function using AWS SAM CLI...
+      - sam package --template-file template.yaml --output-template-file packaged-template.yaml
+      - echo Build and packaging complete.
+artifacts:
+  files:
+    - packaged-template.yaml

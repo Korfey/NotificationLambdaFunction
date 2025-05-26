@@ -11,7 +11,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: UploadsNotificationFunction
-      CodeUri: .\src\SqsPolling\bin\Release\net8.0\
+      CodeUri: ./build-output
       Description: 'Sqs processing lambda'
       MemorySize: 512
       Timeout: 30
