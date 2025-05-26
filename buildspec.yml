@@ -1,8 +1,4 @@
 version: 0.2
-
-env:
-  variables:
-    SQS_ARN: "arn:aws:sqs:us-east-1:626635401615:simplewebapp-UploadsNotificationQueue"
 phases:
   install:
     runtime-versions:
@@ -23,3 +19,4 @@ phases:
 artifacts:
   files:
     - packaged-template.yaml
+    - build-output/**/*
