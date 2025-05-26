@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: An AWS Serverless Application Model template describing your function.
+Parameters:
+  SQSQueueArn:
+    Type: String
+    Description: The ARN of the SQS Queue
+    Default: arn:aws:sqs:us-east-1:626635401615:simplewebapp-UploadsNotificationQueue
+Resources:
+  simplewebappUploadsNotificationTopic:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: UploadsNotificationFunction
+      CodeUri: s3://aws-sam-cli-managed-default-samclisourcebucket-u3wsbj0xiodk/d51102975d4ee05654ecb3933bbfe616
+      Description: Sqs processing lambda
+      MemorySize: 512
+      Timeout: 30
+      Handler: SqsPolling::SqsPolling.Function::FunctionHandler
+      Runtime: dotnet8
+      Architectures:
+      - x86_64
+      EphemeralStorage:
+        Size: 512
+      Environment:
+        Variables:
+          SnsArn: arn:aws:sns:us-east-1:626635401615:simplewebapp-UploadsNotificationTopic
+      EventInvokeConfig:
+        MaximumEventAgeInSeconds: 21600
+        MaximumRetryAttempts: 2
+      PackageType: Zip
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - AmazonSNSFullAccess
+      - AmazonSQSFullAccess
+      - AmazonS3FullAccess
+      AutoPublishAlias: live
+      RecursiveLoop: Terminate
+      SnapStart:
+        ApplyOn: None
+      Events:
+        SQS1:
+          Type: SQS
+          Properties:
+            Queue:
+              Ref: SQSQueueArn
+            BatchSize: 10
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: Auto
+      DeploymentPreference:
+        Type: AllAtOnce
+    Metadata:
+      SamResourceId: simplewebappUploadsNotificationTopic

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqsPolling", "src\SqsPolling\SqsPolling.csproj", "{8D6D7C60-B9B7-414C-8876-E7464900F0F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D6D7C60-B9B7-414C-8876-E7464900F0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6D7C60-B9B7-414C-8876-E7464900F0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6D7C60-B9B7-414C-8876-E7464900F0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6D7C60-B9B7-414C-8876-E7464900F0F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3931A366-9C41-4C67-B715-FAA412DC6477}
+	EndGlobalSection
+EndGlobal
