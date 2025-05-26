@@ -24,7 +24,7 @@ namespace SqsPolling
         /// </summary>
         public Function()
         {
-
+            // Trigger change
         }
 
 
